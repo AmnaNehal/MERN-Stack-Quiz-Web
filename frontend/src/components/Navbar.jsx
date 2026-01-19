@@ -1,9 +1,7 @@
-
-import React, { useState ,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { navbarStyles } from "../assets/dummyStyle";
 import { Award, LogIn, LogOut, Menu, X } from "lucide-react";
-
 
 const Navbar = ({ logoSrc }) => {
   const navigate = useNavigate();
@@ -11,27 +9,14 @@ const Navbar = ({ logoSrc }) => {
   // const [loggedIn, setLoggedIn] = useState(false);
 
   const [loggedIn, setLoggedIn] = useState(() => {
-  const u = localStorage.getItem("authToken");
-  return !!u;
-});
+    const u = localStorage.getItem("authToken");
+    return !!u;
+  });
 
   const [menuOpen, setMenuOpen] = useState(false);
 
   // useEffect hook to show login state change
-    useEffect(() => {
-//     try {
-//       const u = localStorage.getItem("authToken");
-//       setLoggedIn(!!u);
-//     } 
-//     // catch (e) {
-//     //   setLoggedIn(false);
-//     // }
-//     catch (e) {
-//       console.error("Auth token error:", e);
-//       setLoggedIn(false);
-// }
-
-
+  useEffect(() => {
     const handler = (ev) => {
       const detailUser = ev?.detail?.user ?? null;
       setLoggedIn(!!detailUser);
@@ -40,8 +25,6 @@ const Navbar = ({ logoSrc }) => {
 
     return () => window.removeEventListener("authChanged", handler);
   }, []);
-
-
 
   // Logout function
   const handleLogout = () => {
@@ -128,21 +111,20 @@ const Navbar = ({ logoSrc }) => {
           {/* Login / Logout button */}
           {!loggedIn && (
             <>
-            <NavLink to="/login" className={navbarStyles.loginButton}>
-            <LogIn className={navbarStyles.buttonIcon} /> Login
-            </NavLink>
-            <NavLink to="/signup" className={navbarStyles.loginButton}>
-            <LogIn className={navbarStyles.buttonIcon} /> Signup
-            </NavLink>
+              <NavLink to="/login" className={navbarStyles.loginButton}>
+                <LogIn className={navbarStyles.buttonIcon} /> Login
+              </NavLink>
+              <NavLink to="/signup" className={navbarStyles.loginButton}>
+                <LogIn className={navbarStyles.buttonIcon} /> Signup
+              </NavLink>
             </>
           )}
-{loggedIn && (
-  <button onClick={handleLogout} className={navbarStyles.logoButton}>
-    <LogOut className={navbarStyles.buttonIcon} />
-    Logout
-  </button>
-)}
-
+          {loggedIn && (
+            <button onClick={handleLogout} className={navbarStyles.logoButton}>
+              <LogOut className={navbarStyles.buttonIcon} />
+              Logout
+            </button>
+          )}
         </div>
 
         <div className={navbarStyles.mobileMenuContainer}>

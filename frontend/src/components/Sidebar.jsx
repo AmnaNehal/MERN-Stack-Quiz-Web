@@ -26,7 +26,7 @@ import {
   CheckCircle
 } from "lucide-react";
 
-const API_BASE = "http://localhost:4000";
+const API_BASE = "https://mern-stack-quiz-backend.onrender.com";
 
 const Sidebar = () => {
   const [selectedTech, setSelectedTech] = useState(null);
