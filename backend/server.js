@@ -7,7 +7,8 @@ import userRouter from './routes/userRoutes.js';
 import resultRouter from './routes/resultRoutes.js';
 
 const app = express();
-const port = 4000
+const port = process.env.PORT || 4000;
+
 
 //MIDDLEWARE
 app.use(cors({
@@ -28,5 +29,5 @@ app.get('/', (req,res) => {
 });
 
 app.listen(port, () => {
-    console.log(`Sever Started on http://localhost:${port}`)
-})
+  console.log(`Server running on port ${port}`);
+});g
