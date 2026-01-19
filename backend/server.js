@@ -12,7 +12,7 @@ const port = process.env.PORT || 4000;
 
 //MIDDLEWARE
 app.use(cors({
-  origin: "https://mern-stack-quiz-web.vercel.app/", 
+  origin: "https://mern-stack-quiz-web.vercel.app", 
   credentials: true
 }));app.use(express.json());
 app.use(express.urlencoded({ extended: true}));
